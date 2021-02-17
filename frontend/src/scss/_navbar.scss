@@ -1,0 +1,90 @@
+@import './variables';
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 10vh;
+    background-color: $color-white;
+    z-index: 1;
+    width: 100%;
+
+    img {
+        display: none; 
+
+        @include sm {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 30%;
+            width: 4rem;
+            filter: drop-shadow(-12px 5px 7px rgba(0,0,0,.5));
+            animation: dml 5s infinite alternate-reverse;
+            z-index: 1000;
+            pointer-events: none;
+    
+            @keyframes dml {
+                from {
+                    transform: translateY(0px);
+                }
+                to {
+                    transform: translateY(20px);
+                }
+            }
+    
+            }
+    }
+
+    
+
+       
+        
+    
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    color: $color-blue;
+
+   
+
+    @include sm {
+        width: 90%;
+        
+    }
+    
+
+    > * {
+        flex-basis: 100%;
+    }
+
+    &__logo {
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 1000;
+        }
+    }
+
+    &__links {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 1.5rem;
+                
+                button {
+                    border: none;
+                    outline: none;
+                    background-color: $color-red;
+                    color: $color-white;
+                    padding: .5em 1.5em;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+         
+        
+    }
+}

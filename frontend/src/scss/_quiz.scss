@@ -1,0 +1,117 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 5rem auto;
+    min-height: 80vh;
+    width: 100%;
+    position: relative;
+
+}
+
+.seconds{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    color: $color-red;
+}
+
+
+.quiz {
+    display: flex;
+    height: 50rem;
+    width: 60%;
+    background-color: $color-black;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 2rem;
+
+    @include lg{
+        width: calc(100% + -1em);
+        height: 70rem;
+        gap: 3rem;
+        padding: 3rem;
+    }
+
+    @include md {
+        width: calc(100% + -3em);
+        height: 60rem;
+        padding: 5rem;
+    }
+
+    @include sm {
+        width: 100%;
+        padding: 3rem 0;
+        border-radius: 0;
+    }
+
+    > * {
+        flex-basis: 100%;
+    }
+
+    img {
+        width: 30rem;
+
+        @include md {
+            display: none;
+        }
+    }
+
+    form {
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        padding: 2rem;
+
+
+        .quiz__questions {
+            color: $color-white;
+            width: 100%;
+            padding: 2rem;
+            line-height: 2.5em;
+        }
+
+        .quiz__answers {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 1rem;
+
+            &--list { 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 1.5em 0;
+                background: linear-gradient(to right, $color-blue 90%, #A3E1E0);
+                font-size: 1.5rem;
+                outline: none;
+                color: $color-white;
+                cursor: pointer;
+                position: relative;
+
+            }
+
+            .correct {
+                background: $color-green;
+            }
+
+            .wrong {
+                background: $color-red;
+            }
+        }
+
+        button {
+            padding: 1em 0;
+            margin: 0 2rem;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: $color-blue;
+            color: white;
+            letter-spacing: .1em;
+            font-size: 1.5rem;
+        }
+    }
+}

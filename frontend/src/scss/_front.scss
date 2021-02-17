@@ -1,0 +1,60 @@
+@import './variables';
+
+.front {
+    height: 100vh;
+    width: 100%;
+    padding: 15rem 0;
+    z-index: 1000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-black;
+    gap: 5rem;
+
+    @include sm {
+        padding: 25rem 0;
+    }
+    
+
+    h2 {
+        position: relative;
+        margin: 0;
+        font-size: clamp(3rem, 5vw, 4rem);
+        font-weight: 900;
+        color: $color-white;
+        z-index: 1;
+        letter-spacing: .1em;
+        overflow: hidden;
+        transform: translateY(-20px);
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, $color-black 5%, $color-black 100%);
+            animation: animate 3s infinite alternate-reverse;
+
+            @keyframes animate 
+            {
+                0% {
+                    left: 120%;
+                }
+
+                100% {
+                    left: -20%;
+                }
+            }
+        }
+
+        span {
+            color: $color-red;
+        }
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+}
