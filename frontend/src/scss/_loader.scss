@@ -8,21 +8,5 @@
     min-height: 100vh;
     z-index: 10000;
 
-    img {
-        height: 15vh;
-        animation: App-logo-spin infinite 3s linear;
-    }
 
-    @keyframes App-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-    h2 {
-      color: $color-white;
-    }
 }

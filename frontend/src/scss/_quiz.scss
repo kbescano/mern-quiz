@@ -6,22 +6,48 @@
     min-height: 80vh;
     width: 100%;
     position: relative;
+    visibility: hidden;
+
+    h1 {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    p {
+        position: absolute;
+        display: flex;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        gap: 1rem;
+        color: $color-dark-blue;
+
+        span {
+            color: $color-red;
+        }
+    }
 
 }
 
 .seconds{
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
-    color: $color-red;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+
 }
+
 
 
 .quiz {
     display: flex;
     height: 50rem;
     width: 60%;
-    background-color: $color-black;
+    background-color: $color-white;
     gap: 2rem;
     padding: 2rem;
     border-radius: 2rem;
@@ -63,13 +89,14 @@
         justify-content: space-around;
         flex-direction: column;
         padding: 2rem;
-
+        background: #fff;
 
         .quiz__questions {
-            color: $color-white;
+            color: #0C7489;
             width: 100%;
             padding: 2rem;
             line-height: 2.5em;
+            font-size: 1.3rem;
         }
 
         .quiz__answers {
@@ -84,22 +111,16 @@
                 align-items: center;
                 width: 100%;
                 padding: 1.5em 0;
-                background: linear-gradient(to right, $color-blue 90%, #A3E1E0);
+                background: radial-gradient( $color-blue, $color-dark-blue);
                 font-size: 1.5rem;
                 outline: none;
-                color: $color-white;
+                color: #fff;
                 cursor: pointer;
                 position: relative;
+                border-radius: .5rem;
 
             }
 
-            .correct {
-                background: $color-green;
-            }
-
-            .wrong {
-                background: $color-red;
-            }
         }
 
         button {

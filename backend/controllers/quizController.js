@@ -5,26 +5,27 @@ import Quiz from '../models/quizModel.js'
 // @route Post /api/quiz
 // @access Private
 const addQuizItems = asyncHandler(async (req, res) => {
-    const {
-        questions,
-        answers
-    } = req.body
+    const { question, option1, option2, option3, option4, answer} = req.body
+    
+    const quiz = new Quiz({
+        user: req.user._id,
+        question,
+        option1,
+        option2,
+        option3,
+        option4,
+        answer
+     
+    })
 
-    if (questions && questions.length > 4) {
-        res.status(400)
-        throw new Error('4 answers needed!')
-        return
+    const createdQuiz = await quiz.save()
+    if(createdQuiz) {
+        res.json(createdQuiz)
     } else {
-        const order = new Order({
-            user: req.user._id,
-            questions,
-            answers,
-        })
-
-        const createdQuiz = await order.save()
-
-        res.status(201).json(createdQuiz)
+        res.status(400)
+        throw new Error('Invalid product data')
     }
+    
 })
 
 const getQuiz = asyncHandler(async (req, res) => {
@@ -32,6 +33,8 @@ const getQuiz = asyncHandler(async (req, res) => {
 
     res.json(quiz)
 })
+
+
 
 export {
     addQuizItems, getQuiz

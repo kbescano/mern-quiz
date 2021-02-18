@@ -10,12 +10,36 @@
     align-items: center;
     position: relative;
     gap: 5rem;
+    visibility: hidden;
+    background-color: $color-white;
+
+    img {
+        position: fixed;
+        display: flex;
+        width: 10rem;
+
+    }
 
     div{
         position: absolute;
         top: 5%;
+        left: 0;
     }
     h1 {
-        color: $color-white;
+        color: $color-black;
     }
+
+    button {
+        border: none;
+        outline: none;
+        background: none;
+        cursor: pointer;
+        
+        &:focus, &:hover {
+            background: $color-black;
+        }
+    }
+
 }
+
+

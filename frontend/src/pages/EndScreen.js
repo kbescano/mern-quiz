@@ -22,11 +22,11 @@ const EndScreen = () => {
     return (
         <>
         <div className="end" ref={el => con = el}>
-        <div><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_i6sqnxav.json"  background="transparent"  speed="1"  style={{width: "500px", height: "300px"}}  loop  autoplay></lottie-player></div>
+        <div><lottie-player src="https://assets2.lottiefiles.com/packages/lf20_i6sqnxav.json"  background="transparent"  speed="1"  style={{width: "300px", height: "300px"}}  loop  autoplay></lottie-player></div>
         <h1 ref={el => a = el}>Congrats!</h1>
             <h1 ref={el => b = el}>Quiz Finished!</h1>
             <h3></h3> 
-            <Link to='/' ref={el => c = el}><lottie-player src="https://assets4.lottiefiles.com/datafiles/38REYbtm6SMrZpM/data.json"  background="black"  speed="1"  style={{width: "500px", height: "100px" }} loop  autoplay></lottie-player></Link>
+            <button ref={el => c = el}><Link to='/'><lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_lz2Fby.json"  background="white"  speed="1"  style={{width: "150px", height: "150px"}} loop autoplay></lottie-player></Link></button>
         </div>
     </>
     )

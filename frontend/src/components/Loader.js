@@ -1,11 +1,10 @@
 import React from 'react'
-import {logo} from '../data/data'
+
 
 const Loader = () => {
     return (
         <div className='loader'>
-            <img src={logo[0].image} alt="" />
-            <h2>Loading...</h2>
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_ctopYC.json"  background="transparent"  speed="1"  style={{width: "300px" ,height: "300px"}}  loop autoplay></lottie-player>
         </div>
     )
 }

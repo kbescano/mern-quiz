@@ -9,7 +9,7 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #000;
+  background-color: #fff;
   position: relative; }
 
 li {
@@ -22,17 +22,6 @@ li {
   align-items: center;
   min-height: 100vh;
   z-index: 10000; }
-  .loader img {
-    height: 15vh;
-    animation: App-logo-spin infinite 3s linear; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-  .loader h2 {
-    color: #fff; }
 
 header {
   display: flex;
@@ -41,7 +30,7 @@ header {
   margin: 0 auto;
   height: 10vh;
   background-color: #fff;
-  z-index: 1;
+  z-index: 1000;
   width: 100%; }
   header img {
     display: none; }
@@ -49,8 +38,8 @@ header {
       header img {
         display: block;
         position: absolute;
-        top: 0;
-        left: 30%;
+        bottom: 2%;
+        right: 5%;
         width: 4rem;
         filter: drop-shadow(-12px 5px 7px rgba(0, 0, 0, 0.5));
         animation: dml 5s infinite alternate-reverse;
@@ -58,16 +47,16 @@ header {
         pointer-events: none; }
       @keyframes dml {
         from {
-          transform: translateY(0px); }
+          transform: translateY(0px) rotate(10deg); }
         to {
-          transform: translateY(20px); } } }
+          transform: translateY(5px) rotate(-10deg); } } }
 
 .nav {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 60%;
-  color: #006E90; }
+  color: #0C7489; }
   @media (max-width: 596px) {
     .nav {
       width: 90%; } }
@@ -95,19 +84,37 @@ header {
   margin: 5rem auto;
   min-height: 80vh;
   width: 100%;
-  position: relative; }
+  position: relative;
+  visibility: hidden; }
+  .container h1 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .container p {
+    position: absolute;
+    display: flex;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    gap: 1rem;
+    color: #13505B; }
+    .container p span {
+      color: #FE4A49; }
 
 .seconds {
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 50%;
-  color: #FE4A49; }
+  transform: translate(-50%, -50%);
+  z-index: 10000; }
 
 .quiz {
   display: flex;
   height: 50rem;
   width: 60%;
-  background-color: #000;
+  background-color: #fff;
   gap: 2rem;
   padding: 2rem;
   border-radius: 2rem; }
@@ -139,12 +146,14 @@ header {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    padding: 2rem; }
+    padding: 2rem;
+    background: #fff; }
     .quiz form .quiz__questions {
-      color: #fff;
+      color: #0C7489;
       width: 100%;
       padding: 2rem;
-      line-height: 2.5em; }
+      line-height: 2.5em;
+      font-size: 1.3rem; }
     .quiz form .quiz__answers {
       display: flex;
       flex-direction: column;
@@ -156,23 +165,20 @@ header {
         align-items: center;
         width: 100%;
         padding: 1.5em 0;
-        background: linear-gradient(to right, #006E90 90%, #A3E1E0);
+        background: radial-gradient(#0C7489, #13505B);
         font-size: 1.5rem;
         outline: none;
         color: #fff;
         cursor: pointer;
-        position: relative; }
-      .quiz form .quiz__answers .correct {
-        background: #7DCD85; }
-      .quiz form .quiz__answers .wrong {
-        background: #FE4A49; }
+        position: relative;
+        border-radius: .5rem; }
     .quiz form button {
       padding: 1em 0;
       margin: 0 2rem;
       cursor: pointer;
       border: none;
       outline: none;
-      background-color: #006E90;
+      background-color: #0C7489;
       color: white;
       letter-spacing: .1em;
       font-size: 1.5rem; }
@@ -185,37 +191,25 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #000;
-  gap: 5rem; }
+  background-color: #fff;
+  gap: 5rem;
+  visibility: hidden;
+  position: relative; }
   @media (max-width: 596px) {
     .front {
-      padding: 25rem 0; } }
+      padding: 20rem 0; } }
   .front h2 {
     position: relative;
     margin: 0;
     font-size: clamp(3rem, 5vw, 4rem);
     font-weight: 900;
-    color: #fff;
+    color: #000;
     z-index: 1;
     letter-spacing: .1em;
     overflow: hidden;
     transform: translateY(-20px); }
-    .front h2:before {
-      content: '';
-      position: absolute;
-      left: 120%;
-      width: 120%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent 0%, #000 5%, #000 100%);
-      animation: animate 3s infinite alternate-reverse; }
-
-@keyframes animate {
-  0% {
-    left: 120%; }
-  100% {
-    left: -20%; } }
     .front h2 span {
-      color: #FE4A49; }
+      color: #0C7489; }
   .front button {
     cursor: pointer; }
 
@@ -227,9 +221,336 @@ header {
   flex-direction: column;
   align-items: center;
   position: relative;
-  gap: 5rem; }
+  gap: 5rem;
+  visibility: hidden;
+  background-color: #fff; }
+  .end img {
+    position: fixed;
+    display: flex;
+    width: 10rem; }
   .end div {
     position: absolute;
-    top: 5%; }
+    top: 5%;
+    left: 0; }
   .end h1 {
-    color: #fff; }
+    color: #000; }
+  .end button {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer; }
+    .end button:focus, .end button:hover {
+      background: #000; }
+
+.login {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 5rem 0;
+  width: 80%;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .login {
+      width: 90%;
+      padding: 5rem 0; } }
+  @media (max-width: 596px) {
+    .login {
+      width: 100%;
+      padding: 5rem 0; } }
+  .login__main {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    height: 50rem;
+    width: 75%;
+    border: none;
+    padding: 2rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px 0px;
+    visibility: hidden;
+    gap: 3rem; }
+    @media (max-width: 992px) {
+      .login__main {
+        width: calc(100% + -1em);
+        height: 70rem;
+        gap: 3rem;
+        padding: 3rem; } }
+    @media (max-width: 768px) {
+      .login__main {
+        width: calc(100% + -3em);
+        height: 60rem;
+        padding: 5rem; } }
+    @media (max-width: 596px) {
+      .login__main {
+        width: 100%; } }
+    .login__main > * {
+      flex-basis: 100%; }
+    @media (max-width: 768px) {
+      .login__main--img {
+        display: none; } }
+    .login__main--img img {
+      height: 100%;
+      width: 100%;
+      border-radius: .5rem 0 0 .5rem;
+      opacity: .8; }
+    .login__main--content {
+      padding: 3rem 0; }
+      .login__main--content h1 {
+        padding-bottom: 2rem; }
+      .login__main--content form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 1rem;
+        height: 100%; }
+      .login__main--content--input {
+        display: flex;
+        flex-direction: column;
+        padding-right: 8rem; }
+        @media (max-width: 596px) {
+          .login__main--content--input {
+            padding: 0; } }
+        @media (max-width: 768px) {
+          .login__main--content--input {
+            padding: 0; } }
+        .login__main--content--input label {
+          font-size: .9rem;
+          font-weight: 600;
+          padding-bottom: .3rem; }
+        .login__main--content--input input {
+          display: flex;
+          justify-content: center;
+          height: 4rem;
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          border: 1px solid rgba(12, 116, 137, 0.05);
+          padding: 1rem; }
+          @media (max-width: 768px) {
+            .login__main--content--input input {
+              height: 5rem; } }
+          .login__main--content--input input::placeholder {
+            font-size: 1rem; }
+      .login__main--content--account p {
+        font-size: 1rem;
+        font-weight: 300; }
+      .login__main--content--account-sign {
+        color: #000;
+        opacity: 1;
+        font-weight: 600;
+        text-decoration: underline; }
+      .login__main--content--button {
+        padding-right: 8rem; }
+        @media (max-width: 596px) {
+          .login__main--content--button {
+            padding: 0; } }
+        @media (max-width: 768px) {
+          .login__main--content--button {
+            padding: 0; } }
+        .login__main--content--button button {
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          font-size: 1.2rem;
+          letter-spacing: .1em;
+          color: #fff;
+          cursor: pointer;
+          padding: 1.5em 0;
+          background: radial-gradient(#0C7489, #13505B); }
+
+.register {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 5rem 0;
+  width: 80%;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .register {
+      width: 90%;
+      padding: 5rem 0; } }
+  @media (max-width: 596px) {
+    .register {
+      width: 100%;
+      padding: 5rem 0; } }
+  .register__main {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    height: 50rem;
+    width: 75%;
+    border: none;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px 0px;
+    visibility: hidden;
+    gap: 3rem; }
+    @media (max-width: 992px) {
+      .register__main {
+        width: calc(100% + -1em);
+        height: 70rem;
+        gap: 3rem;
+        padding: 3rem; } }
+    @media (max-width: 768px) {
+      .register__main {
+        width: calc(100% + -3em);
+        height: 60rem;
+        padding: 5rem; } }
+    @media (max-width: 596px) {
+      .register__main {
+        width: 100%; } }
+    .register__main > * {
+      flex-basis: 100%; }
+    @media (max-width: 768px) {
+      .register__main--img {
+        display: none; } }
+    .register__main--img img {
+      height: 100%;
+      width: 100%;
+      border-radius: .5rem 0 0 .5rem; }
+    .register__main--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding-top: .5rem; }
+      .register__main--content form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 2.5rem;
+        height: 90%; }
+      .register__main--content--input {
+        display: flex;
+        flex-direction: column;
+        padding-right: 8rem; }
+        @media (max-width: 768px) {
+          .register__main--content--input {
+            padding: 1rem; } }
+        @media (max-width: 596px) {
+          .register__main--content--input {
+            padding: 0; } }
+        .register__main--content--input label {
+          font-size: .9rem;
+          font-weight: 600;
+          padding-bottom: .3rem; }
+        .register__main--content--input input {
+          display: flex;
+          justify-content: center;
+          height: 4rem;
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          border: 1px solid rgba(12, 116, 137, 0.05);
+          padding: 1rem; }
+          .register__main--content--input input::placeholder {
+            font-size: 1rem; }
+      .register__main--content--account p {
+        font-size: 1rem;
+        font-weight: 300; }
+      .register__main--content--account-sign {
+        color: #000;
+        opacity: 1;
+        font-weight: 600;
+        text-decoration: underline; }
+      .register__main--content--button {
+        padding-right: 8rem; }
+        @media (max-width: 768px) {
+          .register__main--content--button {
+            padding: 1rem; } }
+        @media (max-width: 596px) {
+          .register__main--content--button {
+            padding: 0; } }
+        .register__main--content--button button {
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          font-size: 1.2rem;
+          letter-spacing: .1em;
+          color: #fff;
+          cursor: pointer;
+          padding: 1.5em 0;
+          background: radial-gradient(#0C7489, #13505B); }
+
+.createquiz {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 5rem auto;
+  min-height: 60vh; }
+  .createquiz__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 60%;
+    border: none;
+    padding: 5rem 0;
+    gap: 5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px 0px;
+    border-radius: 2rem; }
+    @media (max-width: 768px) {
+      .createquiz__main {
+        width: 90%;
+        padding: 2rem 0; } }
+    @media (max-width: 596px) {
+      .createquiz__main {
+        width: 100%;
+        padding: 2rem 0; } }
+    .createquiz__main--content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 40%;
+      gap: 3rem; }
+      @media (max-width: 768px) {
+        .createquiz__main--content {
+          width: 80%; } }
+      .createquiz__main--content form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 2rem;
+        height: 100%; }
+      .createquiz__main--content--input {
+        display: flex;
+        flex-direction: column; }
+        .createquiz__main--content--input label {
+          font-size: .8rem;
+          font-weight: 600;
+          padding-bottom: .3rem; }
+        .createquiz__main--content--input input {
+          display: flex;
+          justify-content: center;
+          height: 4rem;
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          border: 1px solid rgba(12, 116, 137, 0.05);
+          padding: 1rem; }
+          .createquiz__main--content--input input::placeholder {
+            font-size: 1rem; }
+      @media (max-width: 768px) {
+        .createquiz__main--content--button {
+          padding: 1rem; } }
+      @media (max-width: 596px) {
+        .createquiz__main--content--button {
+          padding: 0; } }
+      .createquiz__main--content--button button {
+        width: 100%;
+        border-radius: .5rem;
+        outline: none;
+        border: none;
+        font-size: 1.2rem;
+        letter-spacing: .1em;
+        color: #fff;
+        cursor: pointer;
+        padding: 1.5em 0;
+        background: radial-gradient(#0C7489, #13505B); }
