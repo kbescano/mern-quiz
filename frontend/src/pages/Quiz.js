@@ -1,12 +1,12 @@
 import React, { useState, useEffect , useRef} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { logo } from '../data/data'
 import { toast } from 'react-toastify'
 import Loader from '../components/Loader'
-import { quizlist } from '../actions/quizAction'
+import { addScore, quizlist } from '../actions/quizAction'
 import {TweenLite, Power3} from 'gsap'
 import { gsap } from 'gsap'
 import { CSSPlugin } from 'gsap/CSSPlugin'
+import ProgressBar from "@ramonak/react-progress-bar";
 
 
 const Quiz = ({history}) => {
@@ -24,7 +24,7 @@ const Quiz = ({history}) => {
     const [seconds, setSeconds] = useState(60);
     const [isRunning, setIsRunning] = useState(false);
     const [optionChosen, setOptionChosen] = useState("");
-
+             
     const nextQuestion = currentQuestion + 1;
 
     const dispatch = useDispatch()
@@ -39,6 +39,8 @@ const Quiz = ({history}) => {
     const answer3 = quiz.map(item => item.option3)
     const answer4 = quiz.map(item => item.option4)
     const answer =  quiz.map(item => item.answer)
+
+    const progress = (currentQuestion / quiz.length) * 100
 
     useEffect(() => {
         
@@ -60,28 +62,35 @@ const Quiz = ({history}) => {
     }, [isRunning, dispatch]);
 
     useEffect(() => {
-        if(!loading) {
+        if(!loading){
             TweenLite.to(con, 0, {css: {visibility: "visible"}})
-            TweenLite.staggerFrom([a, b, c ], .8, {opacity: 0, x: 10, ease: Power3.easeInOut}, .2)
+            TweenLite.staggerFrom([a,b,c], .8, {opacity: 0,y: 10, ease: Power3.easeInOut}, .2)
         }
         if(score) {
-            TweenLite.staggerFrom([d ], .8, {opacity: 0, x: 5, ease: Power3.easeInOut}, .2)
+            TweenLite.from(d, .8, {opacity: 0, x: 5, ease: Power3.easeInOut}, .2)
         }
         
-    }, [loading , score])
+    }, [ score, loading])
+
 
     if (seconds === 0) {
         setCurrentQuestion(nextQuestion)
-        setSeconds(30)
+        setSeconds(60)
     }
 
     const chooseOption = (option) => {
         setOptionChosen(option);
         if (answer[currentQuestion] == option) {
             setScore(score + 10);
-            toast('Correct')
+            toast('Correct', {
+                autoClose: 2000,
+                position: "top-center",
+            })
         } else {
-            toast.error('Wrong')
+            toast.error('Wrong', {
+                autoClose: 2000,
+                position: "top-center",
+            })
         }
         if (nextQuestion < quiz.length) {
             setCurrentQuestion(nextQuestion);
@@ -90,6 +99,7 @@ const Quiz = ({history}) => {
         }
 
         if (nextQuestion === quiz.length) {
+            dispatch(addScore(score))
             history.push('/end')
         }
         setSeconds(60)
@@ -98,29 +108,36 @@ const Quiz = ({history}) => {
   
 
     return (
-        <>
-            <header>
-            <img src='/images/dml.png' alt="logo" />
+        <>  
+            <section>
             <div className='nav'>
             <div className='nav__logo'>
-            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_XRf80W.json"  background="transparent" speed="0"  style={{width: "100px", height: "100px"}}  loop  autoplay></lottie-player>
+            {currentQuestion > 0 ? (
+                <ProgressBar completed={progress} bgcolor={'#7DCD85'} baseBgColor={'#f5f5f5'}/>
+            ) : ''} 
             </div>
             <div className='nav__links'>
-            <lottie-player src="https://assets2.lottiefiles.com/temp/lf20_hUIoYZ.json"  background="transparent" speed="0"  style={{width: "100px", height : "100px"}}  loop  autoplay></lottie-player>
+            {score > 0 ? (<p>Score: <span ref={el => d = el}>{score}</span></p>) : ''}
             </div>
             </div>
-            </header>
+            </section>
         {loading ? <Loader /> : (
-            
+                <>
+                
+                <img className='img' src='/images/dml.png' alt="logo" />
             <div className='container' ref={el => con = el}>
-                {score > 0 ? (<p>Score: <span ref={el => d = el}>{score}</span></p>) : ''}
+                {/* {currentQuestion > 0 ? <div className='progress'>{`${currentQuestion + 1}/ ${quiz.length} `}</div> : ''} */}
+                
                 {isRunning && 
                    <>
                    <div className='seconds'>
                 <lottie-player src="https://assets3.lottiefiles.com/datafiles/JurDGEHkXvf87GO/data.json"  background="transparent"  speed="1"  style={{width: "200px" , height: "200px"}}  loop  autoplay></lottie-player>
                 <h1>{seconds}</h1></div> </>}  
+                
                 <div className='quiz'>
-                    <img src={logo[1].image} alt="" ref={el => c = el}/>
+                    <div className='quiz__left'ref={el => c = el}>
+                    <img src='/images/templarcross.png' alt="" />
+                    </div>
                     <form >
                         <div className='quiz__questions' ref={el => a = el}><h2>{question[currentQuestion]}</h2></div>
                         <div className='quiz__answers' ref={el => b = el}>
@@ -137,9 +154,12 @@ const Quiz = ({history}) => {
                             onClick={() => chooseOption("option4")}>
                                 {answer4[currentQuestion]}</div>
                         </div>
+                        
                     </form>
+                    
                 </div>
             </div>
+            </>
         )}
                     </>
     )

@@ -17,7 +17,7 @@ $screen-xs-max: 420px;
 $screen-sm-max: 596px;
 $screen-md-max: 768px;
 $screen-lg-max: 992px;
-$screen-xl-min: 1024px;
+$screen-xl-max: 1024px;
 
 // Mixins
 
@@ -46,13 +46,13 @@ $screen-xl-min: 1024px;
 }
 
 @mixin xl {
-    @media (min-width: #{$screen-xl-min}) {
+    @media (max-width: #{$screen-xl-max}) {
         @content;
     }
 }
 
 @mixin xl {
-    @media (min-width: #{$screen-xl-min}) {
+    @media (max-width: #{$screen-xl-max}) {
         @content;
     }
 }

@@ -4,9 +4,8 @@ import bcrypt from 'bcryptjs'
 const scoreSchema = mongoose.Schema({
 
     score: {
-        type: String,
-        required: true
-    },
+        type: Number,
+    }
 
 }, {timestamps: true})
 

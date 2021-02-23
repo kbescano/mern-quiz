@@ -12,15 +12,15 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.post('https://mern-quiz.herokuapp.com/api/users/login', {
+        const {data} = await axios.post('/api/users/login', {
             email,
             password
         }, config)
-
+        
         dispatch({type: USER_LOGIN_SUCCESS, payload: data})
         toast(`Welcome ${data.name}`)
 
-        localStorage.setItem('userQuiz', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
@@ -41,7 +41,7 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const {data} = await axios.post('https://mern-quiz.herokuapp.com/api/users', {
+        const {data} = await axios.post('/api/users', {
             name,
             email,
             password
@@ -53,21 +53,20 @@ export const register = (name, email, password) => async (dispatch) => {
 
         toast('Thank you for register!')
 
-        localStorage.setItem('userQuiz', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
-        toast.error(`${error.response.data.message}`)
     }
 }
 
 
 export const logout = () => (dispatch) => {
 
-    localStorage.removeItem('userQuiz')
+    localStorage.removeItem('userInfo')
     dispatch({type: USER_LOGOUT})
     toast('Logged out Successfully')
 }

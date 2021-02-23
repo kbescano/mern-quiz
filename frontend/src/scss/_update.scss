@@ -1,6 +1,6 @@
 @import './variables';
 
-.createquiz {
+.updatequiz {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -80,6 +80,7 @@
                         font-size: 1rem;
                     }
                 }
+
                 select {
                     height: 4rem;
                     outline: none;

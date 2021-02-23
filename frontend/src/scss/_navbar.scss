@@ -8,38 +8,8 @@ header {
     height: 10vh;
     background-color: $color-white;
     z-index: 1000;
-    width: 100%;
+    width: 100%; 
 
-    img {
-        display: none; 
-
-        @include sm {
-            display: block;
-            position: absolute;
-            bottom: 2%;
-            right: 5%;
-            width: 4rem;
-            filter: drop-shadow(-12px 5px 7px rgba(0,0,0,.5));
-            animation: dml 5s infinite alternate-reverse;
-            z-index: 1000;
-            pointer-events: none;
-    
-            @keyframes dml {
-                from {
-                    transform: translateY(0px) rotate(10deg);
-                }
-                to {
-                    transform: translateY(5px) rotate(-10deg);
-                }
-            }
-    
-            }
-    }
-
-    
-
-       
-        
     
 }
 
@@ -53,7 +23,7 @@ header {
    
 
     @include sm {
-        width: 90%;
+        width: 100%;
         
     }
     
@@ -74,17 +44,95 @@ header {
         display: flex;
         justify-content: flex-end;
         font-size: 1.5rem;
-                
-                button {
-                    border: none;
-                    outline: none;
-                    background-color: $color-red;
-                    color: $color-white;
-                    padding: .5em 1.5em;
-                    font-size: 1.5rem;
-                    cursor: pointer;
-                }
-         
+
         
+    }
+}
+
+i {
+    padding-right: 1rem;
+    color: $color-red;
+}
+
+.sidebar {
+        width: 30vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 1000;
+        background: $color-white;
+
+        @include md {
+            width: 100vw;
+        }
+
+    &__links {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2rem;
+        position: relative;
+
+        @include xl {
+            justify-content: flex-start;
+            padding: 10rem 0;
+        }
+
+        &--x {
+            position: absolute;
+            font-size: 3rem;
+            top: 3%;
+            right: 10%;
+
+            i {
+                cursor: pointer;
+            }
+        }
+
+        p {
+            font-size: clamp(1rem, 5vw, 1.5rem);
+            color: $color-white;
+            padding: 1em 2em;
+            background: radial-gradient( $color-blue, $color-dark-blue);
+            cursor: pointer;
+            border-radius: .5rem;
+            text-align: center;
+
+            &:hover {
+                background: $color-white;
+                color: $color-blue;
+                outline: 1px solid $color-blue;
+            }
+        }
+
+        button {
+            padding: 1em 3.5em;
+            width: 100%;
+            font-size: 1.5rem;
+            border-radius: .5rem;
+            border: none;
+            outline: none;
+            background: $color-red;
+            color: $color-white;
+            cursor: pointer;
+        }
+    }
+
+    &.active {
+        animation: active .3s linear;
+        left: 0;
+
+    @keyframes active {
+        from {
+            left: -100%;
+        }
+
+        to {
+            left: 0;
+        }
+    }
     }
 }

@@ -9,6 +9,9 @@ import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import EndScreen from './pages/EndScreen'
 import CreateQuiz from './pages/CreateQuiz'
+import Quizlist from './pages/Quizlist'
+import Footer from './components/Footer'
+import UpdateQuiz from './pages/UpdateQuiz'
 
 const App = () => {
 
@@ -22,7 +25,10 @@ const App = () => {
       <Route path='/end' component={EndScreen}/>
       <Route path='/login' component={LoginScreen}/>
       <Route path='/register' component={RegisterScreen}/>
-      <Route path='/create' component={CreateQuiz}/>
+      <Route path='/admin/create' component={CreateQuiz} exact/>
+      <Route path='/admin/quizlist' component={Quizlist} exact/>
+      <Route path='/admin/quiz/:id/edit' component={UpdateQuiz}/>
+      <Footer/>
     </Router>
   )
 }

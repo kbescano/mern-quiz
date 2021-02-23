@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import Meta from '../components/Meta'
 import Navbar from '../components/Navbar'
 import Loader from '../components/Loader'
-import { createQuiz, quizlist } from '../actions/quizAction'
-import { QUIZ_CREATE_RESET } from '../constants/quizConstant'
+import {  getQuizDetails, updateQuiz } from '../actions/quizAction'
 import { toast } from 'react-toastify'
+import { QUIZ_UPDATE_RESET } from '../constants/quizConstant'
 
 
 
-const CreateQuiz = ({ history }) => {
+const UpdateQuiz = ({ history, match }) => {
 
     toast.configure()
-
+    const quizId = match.params.id
 
     const [question, setQuestion] = useState('')
     const [option1, setOption1] = useState('')
@@ -23,25 +23,40 @@ const CreateQuiz = ({ history }) => {
 
     const dispatch = useDispatch()
 
-    const quizCreate = useSelector(state => state.quizCreate)
+    const quizDetails = useSelector(state => state.quizDetails)
 
-    const { loading, success,  quiz, error } = quizCreate
+    const { loading, quiz } = quizDetails
+
+    const quizUpdate = useSelector(state => state.quizUpdate)
+
+    const { loading: loadingUpdate, success , error} = quizUpdate
+
+
+     useEffect(() => {
+        if (success) {
+            dispatch({type: QUIZ_UPDATE_RESET})
+            dispatch(getQuizDetails(quizId))
+            history.push('/admin/quizlist')
+        } else {
+            if (!quiz.question || quiz._id !== quizId) {
+                dispatch(getQuizDetails(quizId))
+            } else {
+                setQuestion(quiz.question)
+                setOption1(quiz.option1)
+                setOption2(quiz.option2)
+                setOption3(quiz.option3)
+                setOption4(quiz.option4)
+                setAnswer(quiz.answer)
+            }
+        }
+    }, [dispatch, quiz, quizId, history, success])
 
     console.log(answer)
-
-    useEffect(() => {
-        if (success) {
-            dispatch({ type: QUIZ_CREATE_RESET })
-            dispatch(quizlist())
-            history.push('/admin/quizlist')
-        }
-    }, [dispatch, history, success, quiz])
-
 
     const submitHandler = (e) => {
         e.preventDefault()
         if(answer === 'option1' || answer === 'option2' || answer === 'option3' || answer === 'option4' ){
-            dispatch(createQuiz({ question, option1, option2, option3, option4, answer  }))
+            dispatch(updateQuiz({ _id: quizId, question, option1, option2, option3, option4, answer  }))
         } else {
             toast.error('Invalid data!')
         }
@@ -53,37 +68,38 @@ const CreateQuiz = ({ history }) => {
             <Meta title='Create quiz' />
             <Navbar />
             {loading && <Loader />}
+            {loadingUpdate && <Loader />}
             {error && console.log(error)}
-            <div className='createquiz'>
-                <div className='createquiz__main'>
-                    <div className='createquiz__main--content'>
-                        <h1>Create Quiz</h1>
+            <div className='updatequiz'>
+                <div className='updatequiz__main'>
+                    <div className='updatequiz__main--content'>
+                        <h1>Update Quiz</h1>
                         <form onSubmit={submitHandler}>
-                            <div className='createquiz__main--content--input'>
+                            <div className='updatequiz__main--content--input'>
                                 <label>Question</label>
                                 <input type="text" placeholder='Type question' value={question} onChange={(e) => setQuestion(e.target.value)} />
                             </div>
-                            <div className='createquiz__main--content--input'>
+                            <div className='updatequiz__main--content--input'>
                                 <label>Option 1</label>
                                 <input type="text" placeholder='Type option 1'
                                     value={option1} onChange={(e) => setOption1(e.target.value)} />
                             </div>
-                            <div className='createquiz__main--content--input'>
+                            <div className='updatequiz__main--content--input'>
                                 <label>Option 2</label>
                                 <input type="text" placeholder='Type option 2'
                                     value={option2} onChange={(e) => setOption2(e.target.value)} />
                             </div>
-                            <div className='createquiz__main--content--input'>
+                            <div className='updatequiz__main--content--input'>
                             <label>Option 3</label>
                                 <input type="text" placeholder='Type option 3'
                                     value={option3} onChange={(e) => setOption3(e.target.value)} />
                             </div>
-                            <div className='createquiz__main--content--input'>
+                            <div className='updatequiz__main--content--input'>
                             <label>Option 4</label>
                                 <input type="text" placeholder='Type option 4'
                                     value={option4} onChange={(e) => setOption4(e.target.value)} />
                             </div>
-                            <div className='createquiz__main--content--input'>
+                            <div className='updatequiz__main--content--input'>
                             <label>Answer</label>
                                 <select value={answer} onChange={(e) => setAnswer(e.target.value)}> 
                                     <option value='option1' key='1' >{option1}</option> 
@@ -93,8 +109,8 @@ const CreateQuiz = ({ history }) => {
                                 </select>
                             </div>
                             
-                            <div className='createquiz__main--content--button'>
-                                <button>Create</button>
+                            <div className='updatequiz__main--content--button'>
+                                <button>Update</button>
                             </div>
                         </form>
                     </div>
@@ -104,4 +120,4 @@ const CreateQuiz = ({ history }) => {
     )
 }
 
-export default CreateQuiz
+export default UpdateQuiz

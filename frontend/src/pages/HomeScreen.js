@@ -11,10 +11,8 @@ const HomeScreen = () => {
     gsap.registerPlugin(CSSPlugin)
 
     useEffect(() => {
-     
         TweenLite.to(con, 0, {css: {visibility: "visible"}})
         TweenLite.staggerFrom([a], .8, {opacity: 0, y: 20, ease: Power3.easeInOut}, .2)
-        
     }, [])
 
 
