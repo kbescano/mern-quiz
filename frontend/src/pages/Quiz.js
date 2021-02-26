@@ -40,7 +40,7 @@ const Quiz = ({history}) => {
     const answer4 = quiz.map(item => item.option4)
     const answer =  quiz.map(item => item.answer)
 
-    const progress = (currentQuestion / quiz.length) * 100
+    const progress =  Math.round((currentQuestion / quiz.length) * 100)
 
     useEffect(() => {
         
@@ -67,7 +67,7 @@ const Quiz = ({history}) => {
             TweenLite.staggerFrom([a,b,c], .8, {opacity: 0,y: 10, ease: Power3.easeInOut}, .2)
         }
         if(score) {
-            TweenLite.from(d, .8, {opacity: 0, x: 5, ease: Power3.easeInOut}, .2)
+            TweenLite.from(d, .8, {opacity: 0, x: 5, ease: Power3.easeOut}, .2)
         }
         
     }, [ score, loading])
@@ -99,7 +99,7 @@ const Quiz = ({history}) => {
         }
 
         if (nextQuestion === quiz.length) {
-            dispatch(addScore(score))
+            dispatch(addScore(score + 10))
             history.push('/end')
         }
         setSeconds(60)
@@ -124,10 +124,9 @@ const Quiz = ({history}) => {
         {loading ? <Loader /> : (
                 <>
                 
-                <img className='img' src='/images/dml.png' alt="logo" />
-            <div className='container' ref={el => con = el}>
-                {/* {currentQuestion > 0 ? <div className='progress'>{`${currentQuestion + 1}/ ${quiz.length} `}</div> : ''} */}
                 
+            <div className='container' ref={el => con = el}>
+            <img className='img' src='/images/dml.png' alt="logo" />
                 {isRunning && 
                    <>
                    <div className='seconds'>

@@ -7,6 +7,11 @@
     margin: 5rem auto;
     min-height: 60vh;
 
+    @include sm {
+        width: 100%;
+        margin: 2rem auto;
+    }
+
     &__main {
         display: flex;
         justify-content: center;

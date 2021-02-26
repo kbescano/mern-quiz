@@ -70,7 +70,7 @@ const LoginScreen = ({location,history}) => {
                                             onChange={(e) => setPassword(e.target.value)} />
                                     </div>
                                     <div className='login__main--content--account'>
-                                        <p> New Customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} className='login__main--content--account-sign' style={{ color: '#F93943' }}>Register</Link></p>
+                                        <p> Create Account? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} className='login__main--content--account-sign' style={{ color: '#F93943' }}>Register</Link></p>
                                     </div>
                                     <div className='login__main--content--button'>
                                         <button>Submit</button>

@@ -52,7 +52,7 @@ const Quizlist = () => {
                     <tbody>
                         {quiz.map((item, index) => (
                             <tr key={item._id}>
-                                <td data-label="Product Id">{index + 1}</td>
+                                <td data-label="ID">{index + 1}</td>
                                 <td data-label="Question" className='quizlist--name'>{item.question}</td>
                                 <td data-label="Option 1">{item.option1}</td>
                                 <td data-label="Option 2">{item.option2}</td>

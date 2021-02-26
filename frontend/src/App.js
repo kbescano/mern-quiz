@@ -12,6 +12,8 @@ import CreateQuiz from './pages/CreateQuiz'
 import Quizlist from './pages/Quizlist'
 import Footer from './components/Footer'
 import UpdateQuiz from './pages/UpdateQuiz'
+import Userlist from './pages/Userlist'
+import UserEdit from './pages/UserEdit'
 
 const App = () => {
 
@@ -28,6 +30,8 @@ const App = () => {
       <Route path='/admin/create' component={CreateQuiz} exact/>
       <Route path='/admin/quizlist' component={Quizlist} exact/>
       <Route path='/admin/quiz/:id/edit' component={UpdateQuiz}/>
+      <Route path='/admin/userlist' component={Userlist}/>
+      <Route path='/admin/user/:id/edit' component={UserEdit} />
       <Footer/>
     </Router>
   )

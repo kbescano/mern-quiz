@@ -118,8 +118,17 @@ i {
             background: $color-red;
             color: $color-white;
             cursor: pointer;
+
+            &:hover {
+                background: $color-white;
+                color: $color-red;
+                outline: 1px solid $color-red;
+            }
+
         }
-    }
+
+        }
+    
 
     &.active {
         animation: active .3s linear;

@@ -1,9 +1,9 @@
 @import './variables';
 
-.login {
+.useredit {
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
     padding: 5rem 0;
     width: 80%;
     margin: 0 auto;
@@ -15,9 +15,8 @@
 
     @include sm {
         width: 100%;
-        padding: 1rem 0;
+        padding: 5rem 0;
     }
-
 
     &__main {
         display: flex;
@@ -27,33 +26,16 @@
         width: 75%;
         border: none;
         padding: 2rem;
-        border-radius: 2rem;
-        border: 1px solid rgba($color: $color-black, $alpha: .1);
+        border-radius: .5rem;
         box-shadow: rgba(0, 0, 0, 0.20) 0px 8px 24px 0px;
-        visibility: hidden;
-        gap: 3rem;
-
-        @include lg{
-            width: calc(100% + -1em);
-            height: 70rem;
-            gap: 3rem;
-            padding: 3rem;
-        }
-
-        @include md {
-            width: calc(100% + -3em);
-            height: 60rem;
-            padding: 5rem;
-        }
 
         @include sm {
             width: 100%;
         }
 
-        
-
         >* {
             flex-basis: 100%;
+
         }
 
         &--img {
@@ -64,7 +46,7 @@
 
             img {
                 height: 100%;
-                width: 100%;
+                max-width: 100%;
                 border-radius: .5rem 0 0 .5rem;
                 opacity: .8;
 
@@ -74,32 +56,29 @@
         }
 
         &--content {
-            padding: 3rem 0;
-
-            h1 {
-                padding-bottom: 2rem;
-            }
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            height: 100%;
+            padding: 1rem 0;
 
             form {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
-                gap: 1rem;
                 height: 100%;
             }
 
             &--input {
                 display: flex;
                 flex-direction: column;
-
                 padding-right: 8rem;
 
-
-                @include sm {
-                    padding: 0;
+                @include md {
+                    padding: 1rem;
                 }
 
-                @include md {
+                @include sm {
                     padding: 0;
                 }
 
@@ -120,12 +99,19 @@
                     border: 1px solid rgba($color: $color-blue, $alpha: .05);
                     padding: 1rem;
 
-                    @include md {
-                        height: 5rem;
-                    }
 
                     &::placeholder {
                         font-size: 1rem;
+                    }
+                }
+
+                &--admin {
+                    display: flex;
+                    color: $color-red;
+
+                    label {
+                        font-size: 2rem;
+                        padding-right: 1rem;
                     }
                 }
 
@@ -150,20 +136,18 @@
 
 
             &--button {
-
                 padding-right: 8rem;
 
+                @include md {
+                    padding: 1rem;
+                }
 
                 @include sm {
                     padding: 0;
                 }
 
-                @include md {
-                    padding: 0;
-                }
-
-
                 button {
+                    height: 4rem;
                     width: 100%;
                     border-radius: .5rem;
                     outline: none;
@@ -171,9 +155,24 @@
                     font-size: 1.2rem;
                     letter-spacing: .1em;
                     color: $color-white;
+                    transition: all .4s;
                     cursor: pointer;
-                    padding: 1.5em 0;
-                    background: radial-gradient( $color-blue, $color-dark-blue);
+                    background-color: $color-blue;
+                    transition: background .8s;
+                    background-position: center;
+                    background-image: radial-gradient(circle, transparent 1%, $color-blue .5%);
+                    background-size: 12000%;
+                    opacity: .9;
+
+                    &:active {
+                        background-color: $color-white;
+                        transition: background 0s;
+                        background-size: 100%;
+                    }
+
+                    &:hover {
+                        opacity: 1;
+                    }
 
                 }
 

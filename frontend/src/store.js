@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { quizCreateReducer, quizDeleteReducer, quizDetailsReducer, quizListReducer, quizUpdateReducer, saveScoreReducer } from './reducers/quizReducer'
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer'
+import { userDeleteReducer, userDetailsReducer, userListReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer, userUpdateReducer } from './reducers/userReducer'
 
 
 const reducer = combineReducers({
@@ -13,6 +13,11 @@ const reducer = combineReducers({
     quizUpdate: quizUpdateReducer,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
+    userDetails: userDetailsReducer,
+    userUpdateProfile: userUpdateProfileReducer,
+    userUpdate: userUpdateReducer,
+    userList: userListReducer,
+    userDelete: userDeleteReducer,
     score: saveScoreReducer,
     
 })

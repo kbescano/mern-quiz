@@ -46,7 +46,7 @@ const Navbar = ({logo, speed}) => {
               {userInfo && userInfo.isAdmin ? (
                 <>
                 <Link to='/admin/create'><p>Create Quiz</p></Link>
-                {/* <Link to='/admin/userlist'><p>User list</p></Link> */}
+                <Link to='/admin/userlist'><p>User list</p></Link>
                 <Link to='/admin/quizlist'><p>Quiz list</p></Link>
                 {/* <Link to='/admin/scores'><p>Scores list</p></Link> */}
                 </>

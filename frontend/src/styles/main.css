@@ -27,8 +27,7 @@ footer {
   bottom: 0%;
   z-index: 10000;
   padding-left: 1rem;
-  padding-bottom: 1.5rem;
-  z-index: -1; }
+  padding-bottom: 1.5rem; }
   footer i {
     color: #000; }
   @media (max-width: 596px) {
@@ -131,6 +130,10 @@ i {
       background: #FE4A49;
       color: #fff;
       cursor: pointer; }
+      .sidebar__links button:hover {
+        background: #fff;
+        color: #FE4A49;
+        outline: 1px solid #FE4A49; }
   .sidebar.active {
     animation: active .3s linear;
     left: 0; }
@@ -294,7 +297,7 @@ section {
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 1.5em 0;
+        padding: 1.5em 1em;
         background: radial-gradient(#0C7489, #13505B);
         font-size: 1.5rem;
         outline: none;
@@ -395,7 +398,7 @@ section {
   @media (max-width: 596px) {
     .login {
       width: 100%;
-      padding: 5rem 0; } }
+      padding: 1rem 0; } }
   .login__main {
     display: flex;
     justify-content: center;
@@ -514,7 +517,7 @@ section {
   @media (max-width: 596px) {
     .register {
       width: 100%;
-      padding: 5rem 0; } }
+      padding: 1rem 0; } }
   .register__main {
     display: flex;
     justify-content: center;
@@ -622,6 +625,10 @@ section {
   width: 100%;
   margin: 5rem auto;
   min-height: 60vh; }
+  @media (max-width: 596px) {
+    .createquiz {
+      width: 100%;
+      margin: 2rem auto; } }
   .createquiz__main {
     display: flex;
     justify-content: center;
@@ -902,3 +909,188 @@ section {
         cursor: pointer;
         padding: 1.5em 0;
         background: radial-gradient(#0C7489, #13505B); }
+
+.userlist {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 5rem auto;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px 0px;
+  background-color: #fff; }
+  @media (max-width: 992px) {
+    .userlist {
+      width: 80%; } }
+  @media (max-width: 596px) {
+    .userlist {
+      width: 100%; } }
+  .userlist td,
+  .userlist th {
+    padding: 1em;
+    border: 1px solid rgba(12, 116, 137, 0.05);
+    text-align: center;
+    font-size: clamp(1rem, 5vw, 1.2rem); }
+  .userlist td .fa-edit {
+    color: #7DCD85; }
+  .userlist td .fa-trash {
+    color: #FE4A49; }
+  @media (max-width: 596px) {
+    .userlist td {
+      text-align: right;
+      padding-left: 50%;
+      text-align: right;
+      position: relative; } }
+  @media (max-width: 596px) {
+    .userlist td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 15px;
+      font-size: .8rem;
+      font-weight: bold;
+      text-align: left;
+      font-size: clamp(1rem, 5vw, 1.2rem); } }
+  .userlist td .fas {
+    padding: 0.2em;
+    cursor: pointer; }
+  .userlist td .fa-check {
+    color: #7DCD85; }
+  .userlist td .fa-times {
+    color: #FE4A49; }
+  .userlist th {
+    background-color: #0C7489;
+    color: #fff; }
+  @media (max-width: 596px) {
+    .userlist tr {
+      margin-bottom: 15px; } }
+  .userlist tbody tr:nth-child(even) {
+    background-color: #f5f5f5; }
+  @media (max-width: 596px) {
+    .userlist thead {
+      display: none; } }
+  @media (max-width: 596px) {
+    .userlist tbody,
+    .userlist tr,
+    .userlist td {
+      display: block;
+      width: 100%; } }
+
+.useredit {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 5rem 0;
+  width: 80%;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .useredit {
+      width: 90%;
+      padding: 5rem 0; } }
+  @media (max-width: 596px) {
+    .useredit {
+      width: 100%;
+      padding: 5rem 0; } }
+  .useredit__main {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    height: 50rem;
+    width: 75%;
+    border: none;
+    padding: 2rem;
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 24px 0px; }
+    @media (max-width: 596px) {
+      .useredit__main {
+        width: 100%; } }
+    .useredit__main > * {
+      flex-basis: 100%; }
+    @media (max-width: 768px) {
+      .useredit__main--img {
+        display: none; } }
+    .useredit__main--img img {
+      height: 100%;
+      max-width: 100%;
+      border-radius: .5rem 0 0 .5rem;
+      opacity: .8; }
+    .useredit__main--content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      height: 100%;
+      padding: 1rem 0; }
+      .useredit__main--content form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%; }
+      .useredit__main--content--input {
+        display: flex;
+        flex-direction: column;
+        padding-right: 8rem; }
+        @media (max-width: 768px) {
+          .useredit__main--content--input {
+            padding: 1rem; } }
+        @media (max-width: 596px) {
+          .useredit__main--content--input {
+            padding: 0; } }
+        .useredit__main--content--input label {
+          font-size: .9rem;
+          font-weight: 600;
+          padding-bottom: .3rem; }
+        .useredit__main--content--input input {
+          display: flex;
+          justify-content: center;
+          height: 4rem;
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          border: 1px solid rgba(12, 116, 137, 0.05);
+          padding: 1rem; }
+          .useredit__main--content--input input::placeholder {
+            font-size: 1rem; }
+        .useredit__main--content--input--admin {
+          display: flex;
+          color: #FE4A49; }
+          .useredit__main--content--input--admin label {
+            font-size: 2rem;
+            padding-right: 1rem; }
+      .useredit__main--content--account p {
+        font-size: 1rem;
+        font-weight: 300; }
+      .useredit__main--content--account-sign {
+        color: #000;
+        opacity: 1;
+        font-weight: 600;
+        text-decoration: underline; }
+      .useredit__main--content--button {
+        padding-right: 8rem; }
+        @media (max-width: 768px) {
+          .useredit__main--content--button {
+            padding: 1rem; } }
+        @media (max-width: 596px) {
+          .useredit__main--content--button {
+            padding: 0; } }
+        .useredit__main--content--button button {
+          height: 4rem;
+          width: 100%;
+          border-radius: .5rem;
+          outline: none;
+          border: none;
+          font-size: 1.2rem;
+          letter-spacing: .1em;
+          color: #fff;
+          transition: all .4s;
+          cursor: pointer;
+          background-color: #0C7489;
+          transition: background .8s;
+          background-position: center;
+          background-image: radial-gradient(circle, transparent 1%, #0C7489 0.5%);
+          background-size: 12000%;
+          opacity: .9; }
+          .useredit__main--content--button button:active {
+            background-color: #fff;
+            transition: background 0s;
+            background-size: 100%; }
+          .useredit__main--content--button button:hover {
+            opacity: 1; }

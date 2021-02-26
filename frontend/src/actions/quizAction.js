@@ -6,7 +6,7 @@ export const quizlist = () => async (dispatch) => {
     try {
         dispatch({type: QUIZ_LIST_REQUEST})
 
-        const {data} = await axios.get('/api/quiz')
+        const {data} = await axios.get('https://mern-quiz.herokuapp.com/api/quiz')
 
         dispatch({type: QUIZ_LIST_SUCCESS, payload: data})
 
@@ -22,7 +22,7 @@ export const getQuizDetails = (id) => async (dispatch) => {
     try {
         dispatch({type: QUIZ_DETAILS_REQUEST})
 
-        const {data} = await axios.get(`/api/quiz/${id}`)
+        const {data} = await axios.get(`https://mern-quiz.herokuapp.com/api/quiz/${id}`)
 
         dispatch({type: QUIZ_DETAILS_SUCCESS, payload: data})
 
@@ -53,7 +53,7 @@ export const createQuiz = (quiz) => async (dispatch, getState) => {
 
         console.log(userInfo.token)
 
-        const {data} = await axios.post('/api/quiz', quiz, config)
+        const {data} = await axios.post('https://mern-quiz.herokuapp.com/api/quiz', quiz, config)
 
         dispatch({type: QUIZ_CREATE_SUCCESS, payload: data})
 
@@ -85,7 +85,7 @@ export const updateQuiz = (quiz) => async (dispatch, getState) => {
 
         }
 
-        const {data} = await axios.put(`/api/quiz/${quiz._id}`, quiz, config)
+        const {data} = await axios.put(`https://mern-quiz.herokuapp.com/api/quiz/${quiz._id}`, quiz, config)
 
         dispatch({type: QUIZ_UPDATE_SUCCESS, payload: data})
 
@@ -114,7 +114,7 @@ export const deleteQuiz = (id) => async (dispatch, getState) => {
 
         }
 
-        await axios.delete(`/api/quiz/${id}`, config)
+        await axios.delete(`https://mern-quiz.herokuapp.com/api/quiz/${id}`, config)
 
         dispatch({type: QUIZ_DELETE_SUCCESS})
         toast.info('Quiz deleted!')

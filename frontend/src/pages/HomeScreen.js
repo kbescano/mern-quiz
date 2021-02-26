@@ -20,7 +20,7 @@ const HomeScreen = () => {
             <>
             <Navbar logo={''} speed={"1"}/>
             <div className='front' ref={el => con = el}>
-                <h2><span>De</span>Molay <span>Qu</span>iz App</h2> 
+                <h2><span>De</span>Molay <span>Qu</span>iz</h2> 
                 <button ref={el => a = el}><Link to='/quiz'><lottie-player src="https://assets2.lottiefiles.com/datafiles/lWXrvNR9H2FhBqa/data.json"  background="white"  speed=".5"  style={{width: "100px", height: "100px"}} loop autoplay></lottie-player></Link></button>
             </div>
             </>
